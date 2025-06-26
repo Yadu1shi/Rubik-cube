@@ -4,7 +4,7 @@ A fully functional **Rubik’s Cube (3x3)** simulator built using **vanilla Java
 
 ## 📸 Output Screenshot
     
-![Rubik Cube Output](assets/screenshot.png)
+![Rubik Cube Output](assets/RubikCube.png)
 
 
 ## 🚀 Features
