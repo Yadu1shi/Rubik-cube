@@ -1,6 +1,7 @@
+// App.js
 import React, { useState } from 'react';
-import { Rubikcube } from './components/Rubikcube'; // Adjust path as needed
-import './App.css';
+import { Rubikcube } from './components/Rubikcube';
+import './App.css'; // Styling ke liye
 
 const App = () => {
   const [cube, setCube] = useState(new Rubikcube());
@@ -11,7 +12,7 @@ const App = () => {
     Object.assign(newCube.faces, JSON.parse(JSON.stringify(cube.faces))); // Deep copy
     newCube.rotateFace(face);
     setCube(newCube);
-    newCube.printFace(); // For console debugging
+    cube.printFace(); // Debugging
   };
 
   const handleScramble = () => {
@@ -20,16 +21,15 @@ const App = () => {
     newCube.scramble();
     setCube(newCube);
     setScrambleMoves(newCube.scramblemoves);
-    newCube.printFace(); // For console debugging
+    cube.printFace(); // Debugging
   };
 
-  const handleSolveWhiteCross = () => {
+  const handleSolve = () => {
     const newCube = new Rubikcube();
     Object.assign(newCube.faces, JSON.parse(JSON.stringify(cube.faces))); // Deep copy
-    newCube.solveWhiteCross();
+    newCube.makeWhiteCross();
     setCube(newCube);
-    setScrambleMoves(newCube.scramblemoves); // Show solver moves
-    newCube.printFace(); // For console debugging
+    cube.printFace(); // Debugging
   };
 
   const getColor = (color) => {
@@ -75,11 +75,11 @@ const App = () => {
             </button>
           ))}
           <button onClick={handleScramble}>Scramble</button>
-          <button onClick={handleSolveWhiteCross}>Solve White Cross</button>
+          <button onClick={handleSolve}>Solve (White Cross)</button>
         </div>
         {scrambleMoves.length > 0 && (
           <div>
-            <h3>Moves:</h3>
+            <h3>Scramble Moves:</h3>
             <p>{scrambleMoves.join(', ')}</p>
           </div>
         )}
